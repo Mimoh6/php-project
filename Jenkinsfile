@@ -18,7 +18,7 @@ pipeline {
           stage('Docker login') {
             steps {
 withCredentials([usernamePassword(credentialsId: 'docker-hub-pwd', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-    sh "echo $DOCKER_PASS | docker login -u mimoh6 --password-stdin"
+    sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
 }
                     sh 'docker push mimoh6/akshatnewimg6july:v1'
                 }
